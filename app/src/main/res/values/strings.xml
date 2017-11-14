@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SheduleTown</string>
+    <string name="ed_usuario">Usuario</string>
+    <string name="ed_contrasenia">Contraseña</string>
+    <string name="btn_login">Login</string>
+    <string name="title_activity_teacher">TeacherActivity</string>
+    <string name="errror_incorrectUser">Usuario o contraseña incorrecto</string>
+    <string name="error_DB">Error en la base de datos</string>
+    <string name="logOut">Log Out</string>
+    <string name="without_hour">Sin horas asignadas</string>
+    <string name="server_down">Sin conexión al servidor</string>
+    <array name="array">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+    </array>
+</resources>
