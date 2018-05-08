@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.iogb.sheduletown.PrefectActivity">
+
     <ImageView
         android:id="@+id/iv_fondoLogo"
         android:layout_width="match_parent"
@@ -15,21 +16,30 @@
 
     <Spinner
         android:id="@+id/sp_area"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="30dp"
+        android:minHeight="25dp"
+        android:minWidth="150dp"
         style="@android:style/Widget.Spinner"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
 
         />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_below="@id/lv_sh"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btn_enviar"
+        android:textSize="@dimen/tam_letra" />
 
     <ListView
         android:id="@+id/lv_sh"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="360dp"
         android:background="@color/colorWhite"
         android:layout_margin="@dimen/fab_margin"
         android:layout_below="@+id/sp_area"
@@ -39,11 +49,14 @@
         android:id="@+id/tv_rango"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="30dp"
+        android:minHeight="40dp"
         android:textSize="@dimen/tam_letra"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginStart="@dimen/fab_margin"
-        android:layout_below="@id/lv_sh"
+        android:layout_marginBottom="7dp"
+        android:layout_above="@id/lv_sh"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/sp_area"
         android:background="@color/colorWhite"
         android:gravity="center"/>
 

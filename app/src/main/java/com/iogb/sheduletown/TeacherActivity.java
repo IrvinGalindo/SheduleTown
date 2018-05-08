@@ -70,7 +70,9 @@ public class TeacherActivity extends AppCompatActivity {
         sp_days.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 gtSchedule();
+                lv_schedule.setAdapter(null);
             }
 
             @Override
@@ -82,7 +84,7 @@ public class TeacherActivity extends AppCompatActivity {
     }
 
     private void gtSchedule() {
-        String url="https://scheduletown.000webhostapp.com/gts/gtSchTea.php";
+        String url="http://scheduletown18.x10host.com/gts/gtSchTea.php";
         String day=sp_days.getSelectedItem().toString();
         parameters.put("e",employee.getIdEmployee());
         parameters.put("d",day);
@@ -111,11 +113,9 @@ public class TeacherActivity extends AppCompatActivity {
                     JSONArray jsonArray = new JSONArray(result);
                     for (int i=0;i<jsonArray.length();i++)
                     {
-
                         TeacherList teacherList = new TeacherList(jsonArray.getJSONObject(i).getString("numsalon"),
                                 jsonArray.getJSONObject(i).getString("nombre"),jsonArray.getJSONObject(i).getString("hora"));
                         arrayList.add(teacherList);
-
                     }
                     lv_schedule.setAdapter(new AdapterItem(this,arrayList));
                 } catch (JSONException e) {

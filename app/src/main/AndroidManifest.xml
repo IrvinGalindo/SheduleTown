@@ -13,24 +13,17 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".TeacherActivity"
             android:label="Teacher Mode">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
-        <activity android:name=".PrefectActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.iogb.sheduletown.LoginActivity" />
-        </activity>
+        <activity android:name=".PrefectActivity"></activity>
     </application>
 
 </manifest>

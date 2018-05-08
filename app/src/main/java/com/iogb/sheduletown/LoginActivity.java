@@ -30,7 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     private RelativeLayout linear;
     private ProgressBar pg_loggin;
     private Session session;
-    String url;
+    private String url;
+    private boolean trust;
     public static final String EMPLOYEE="employee";
 
     @Override
@@ -39,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         session = new Session(this);
         if (session.loggedIn()){
+            employee=new Gson().fromJson(session.getFullInfo(),Employee.class);
+            trust =true;
             goToNext();
         }
         pg_loggin=(ProgressBar) findViewById(R.id.pg_logging);
@@ -81,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
     private void userValidator() {
         pg_loggin.setVisibility(View.VISIBLE);
         btn_login.setVisibility(View.GONE);
-        url="https://scheduletown.000webhostapp.com/lg.php";
+        url="http://scheduletown18.x10host.com/lg.php";
         parameters.put("u",ed_user.getText().toString());
         parameters.put("p",ed_pass.getText().toString());
         client.post(url, parameters, new AsyncHttpResponseHandler() {
@@ -131,11 +134,22 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToNext() {
         Intent intent;
-    if (employee.getType()==2)
-    {
-        String json = new Gson().toJson(employee);
-        session.setLoggedIn(true,json);
+    if (employee.getType()==2) {
+
+        if(!trust) {
+           String json = new Gson().toJson(employee);
+            session.setLoggedIn(true,json);
+        }
         intent= new Intent(getApplicationContext(),TeacherActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+    else {
+        if (!trust) {
+            String json = new Gson().toJson(employee);
+            session.setLoggedIn(true,json);
+        }
+        intent= new Intent(getApplicationContext(),PrefectActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
